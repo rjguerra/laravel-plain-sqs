@@ -5,7 +5,8 @@ namespace Dusterio\PlainSqs\Integrations;
 use Dusterio\PlainSqs\Sqs\Connector;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Queue;
-use Illuminate\Queue\Events\JobProcessed;
+//use Illuminate\Queue\Events\JobProcessed;
+use Illuminate\Contracts\Queue\Job;
 
 /**
  * Class CustomQueueServiceProvider
@@ -30,7 +31,7 @@ class LaravelServiceProvider extends ServiceProvider
         });*/
 
         // This is the proper implementation for Laravel 5.1
-        Queue::after(function ($connection, $job, $data) {
+        Queue::after(function ($connectionName, Job $job) {
             $job->delete();
         });
     }
