@@ -14,24 +14,27 @@ But in certain cases you may want to parse messages from third party application
 ## Dependencies
 
 * PHP >= 5.5
-* Laravel (or Lumen) >= 5.2
+* Laravel (or Lumen) === 5.1
+NOTE this fork is specifically for Laravel 5.1 because of how the 
+`'illuminate.queue.after` arguments are fired. [Reference](https://github.com/laravel/framework/blob/5.1/src/Illuminate/Queue/Worker.php#L253)
 
 ## Installation via Composer
 
-To install simply run:
-
-```
-composer require dusterio/laravel-plain-sqs
-```
-
-Or add it to `composer.json` manually:
+Because this is a fork and not published add it to your `composer.json` like so
 
 ```json
 {
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/rjguerra/laravel-plain-sqs"
+        }
+    ],
     "require": {
-        "dusterio/laravel-plain-sqs": "~0.1"
+        "dusterio/laravel-plain-sqs": "dev-master"
     }
 }
+
 ```
 
 ### Usage in Laravel 5
